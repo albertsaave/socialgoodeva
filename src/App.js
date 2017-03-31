@@ -2,29 +2,42 @@ import React, { Component } from 'react';
 import './App.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, FlatButton} from 'material-ui/Card';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';// Needed for onTouchTap
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
+
+import StripeCheckout from 'react-stripe-checkout';
 
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Questrial, sans-serif',
   palette: {
-    textColor: '#4e4e4e',
-    primary1Color: '#ff3434',
-    accent1Color: '#ff3434',
-    primary2Color: '#ff3434'
+    textColor: '#3eb1c8',
+    primary1Color: '#3eb1c8',
+    accent1Color: '#3eb1c8',
+    primary2Color: '#3eb1c8'
   },
   tabs: {
     backgroundColor: '#f7f7f7',
     textColor: '#8c8c8c',
-    selectedTextColor: '#4e4e4e'
+    selectedTextColor: '#3eb1c8'
   }
 });
 
 class App extends Component {
+
+  onToken = (token) => {
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then(response => {
+      response.json().then(data => {
+        alert(`We are in business, ${data.email}`);
+      });
+    });
+  }
 
   constructor(props){
     super(props);
@@ -38,23 +51,19 @@ class App extends Component {
   render() {
     const style = {
       mainCard: {
-        marginTop: '20%',
-        marginLeft: '20%',
-        width: '40%',
-        height: '70%',
+        marginTop: '20px',
+        width: '300px'
       }
     }
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
+          <div className='row'>
+            <h2>Help End Youth Homelessness.</h2>
+          </div>
           <Card style={style.mainCard}>
-            <CardMedia
-             overlay={<CardTitle title="Donate now!" />}
-             >
-             <img src="images/nature-600-337.jpg" />
-             </CardMedia>
 
-            <RaisedButton label="Monthly" style={{marginRight: '10px',
+            <RaisedButton label="Monthly" primary={true} style={{marginRight: '10px',
               marginTop: '10px'}}/>
             <RaisedButton label="One Time" style={{marginRight: '10px',
               marginTop: '10px'}}/>
@@ -73,7 +82,17 @@ class App extends Component {
               />
             }
 
-            <RaisedButton label="Submit" style={{width: '70%', marginTop: '10px'}}/>
+            <div className='row'>
+              <RaisedButton primary={true} label="Submit" style={{width: '100%', marginTop: '10px', backgroundColor: '#3eb1c8'}}
+                label={<span>
+                  <StripeCheckout
+                    token={this.onToken}
+                    stripeKey="pk_test_dZTC0BYbhboAzM3HuSRAd3RC"
+                  />
+                  <span style={{position: 'absolute', marginTop: '-36px', marginLeft: '-29px', zIndex: '-1'}}> Donate </span>
+                  </span>}
+                />
+            </div>
 
            </Card>
         </div>
