@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';// Needed for onTouchTap
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import TextField from 'material-ui/TextField';
 
 injectTapEventPlugin();
 
@@ -26,7 +26,14 @@ const muiTheme = getMuiTheme({
 
 class App extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {showCustomAmount: false};
+  }
 
+  handleClick = () => {
+    this.setState({showCustomAmount: true});
+  }
 
   render() {
     const style = {
@@ -57,9 +64,16 @@ class App extends Component {
 
             <RaisedButton label="$50" style={{marginRight: '5px'}}/>
             <RaisedButton label="$100" style={{marginRight: '5px'}}/>
-            <RaisedButton label="$1500" style={{marginRight: '5px'}}/>
-            <RaisedButton label="Other" style={{marginRight: '5px'}}/>
-            
+            <RaisedButton label="$150" style={{marginRight: '5px'}}/>
+            <RaisedButton label="Other" style={{marginRight: '5px'}} onClick={this.handleClick}/>
+            {  this.state.showCustomAmount &&
+              <TextField
+                defaultValue="$500"
+                floatingLabelText="Floating Label Text"
+              />
+            }
+
+            <RaisedButton label="Submit" style={{width: '70%', marginTop: '10px'}}/>
 
            </Card>
         </div>
