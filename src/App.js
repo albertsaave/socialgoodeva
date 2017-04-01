@@ -53,7 +53,7 @@ class App extends Component {
     this.state = {showCustomAmount: false, donationAmount: 50,
       monthlyPayments: true, oneTimePayments: false, fiftyDollars: true,
       hundredDollars: false, hundredFiftyPayments: false, otherPayments: false,
-      showPaymentPage: true, showThankYouPage: false};
+      showPaymentPage: true, showThankYouPage:false, fiftyBucks: true, onHundred: false, TwoFiddyHundred: false};
   }
 
   handleClick = () => {
@@ -83,9 +83,16 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <div className='row'>
-            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '25px', marginBottom: '-10px'}}/>
+            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '6%', marginBottom: '-10px'}}/>
             { this.state.showPaymentPage &&
-              <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>HELP END YOUTH HOMELESSNESS</h2>
+              <div>
+                <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px'}}>HELP END</h2>
+                <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px', marginTop: '0'}}>YOUTH HOMELESSNESS</h2>
+                <p style={{color: '#404040', fontSize: '20px', margin: 'auto', marginTop: '8px', marginBottom: '20px', maxWidth: '500px'}}>Provide them with the skills and support they need.</p>
+
+              </div>
+
+
             }
 
             { this.state.showThankYouPage &&
@@ -126,6 +133,16 @@ class App extends Component {
                     />
                   </div>
                 </div>
+
+                { this.state.fiftyBucks &&
+                  <span><img src='images/hygeine.png' /><p style={{color: '#404040'}}> Can provide personal hygiene supplies. </p></span>
+                }
+                { this.state.onHundred &&
+                  <p style={{color: '#f68d2e'}}> Thank you! </p>
+                }
+                { this.state.TwoFiddyHundred &&
+                  <p style={{color: '#f68d2e'}}> Thank you! </p>
+                }
 
                 <div className='row'>
                   <RaisedButton secondary={true} label="Submit" style={{width: '100%', marginTop: '12px', backgroundColor: '#3eb1c8', height: '46px'}}
@@ -173,7 +190,7 @@ class App extends Component {
              </Card>
            </div>
            { this.state.showPaymentPage &&
-             <p style={{color: '#404040', fontSize: '18px', margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>When you give to Eva’s, you help homeless youth get the skills and support they need for a better future.</p>
+             <p style={{color: '#404040', fontSize: '18px', margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>balbalbalblabl.</p>
            }
         </div>
       </MuiThemeProvider>
