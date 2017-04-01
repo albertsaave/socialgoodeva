@@ -6,6 +6,10 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, FlatButto
 import getMuiTheme from 'material-ui/styles/getMuiTheme';// Needed for onTouchTap
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
+import {
+  ShareButtons,
+  generateShareIcon
+} from 'react-share';
 
 import StripeCheckout from 'react-stripe-checkout';
 
@@ -26,6 +30,15 @@ const muiTheme = getMuiTheme({
   }
 });
 
+const {
+  FacebookShareButton,
+  TwitterShareButton
+} = ShareButtons;
+
+const FacebookIcon = generateShareIcon('facebook');
+
+const TwitterIcon = generateShareIcon('twitter');
+
 class App extends Component {
 
   onToken = (token) => {
@@ -37,7 +50,7 @@ class App extends Component {
     this.state = {showCustomAmount: false, donationAmount: 50,
       monthlyPayments: true, oneTimePayments: false, fiftyDollars: true,
       hundredDollars: false, hundredFiftyPayments: false, otherPayments: false,
-      showPaymentPage: true, showThankYouPage:false};
+      showPaymentPage: true, showThankYouPage: false};
   }
 
   handleClick = () => {
@@ -127,16 +140,26 @@ class App extends Component {
                 </div>
                 </div>
               }
+
+              { this.state.showThankYouPage &&
+                <div style={{margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>
+                 IMAGE & share
+
+                 <FacebookShareButton title={'I have donated to Evas'} description={'I have just contributed to Evas to continue with their mission.'} url={'http://evas.ca'}>
+                   <FacebookIcon size={32} />
+                 </FacebookShareButton>
+
+                 <TwitterShareButton title={'I have donated to Evas'} hashtag={'#evasshelters'} url={'http://evas.ca'}>
+                   <TwitterIcon size={32} />
+                 </TwitterShareButton>
+
+                </div>
+              }
+
              </Card>
            </div>
            { this.state.showPaymentPage &&
              <p style={{color: '#404040', fontSize: '18px', margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>When you give to Eva’s, you help homeless youth get the skills and support they need for a better future.</p>
-           }
-
-           { this.state.showThankYouPage &&
-             <div>
-              IMAGE & share
-             </div>
            }
         </div>
       </MuiThemeProvider>
