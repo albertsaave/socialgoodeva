@@ -232,7 +232,7 @@ class App extends Component {
               }
 
               { this.state.showThankYouPage &&
-                <div style={{margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>
+                <div style={{margin: 'auto', marginTop: '0px', maxWidth: '500px'}}>
                   <img src='./images/thankyoushare.jpg' style={{marginLeft: '-7px', height: '300px', width:'300px', marginTop: '10px', marginBottom: '15px'}}/>
 
                  <div style={{width: '100%', color: '#404040'}}>
@@ -258,7 +258,7 @@ class App extends Component {
                    </div>
                  </div>
                  <br/><br/>
-                 <div style={{marginTop: '60px', color: '#404040'}}>
+                 <div style={{marginTop: '45px', color: '#404040'}}>
                     Interested in furthering your impact?
                     <br/>Checkout our events page.
                  </div>
