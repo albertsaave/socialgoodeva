@@ -12,12 +12,12 @@ import StripeCheckout from 'react-stripe-checkout';
 injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
-  fontFamily: 'Questrial, sans-serif',
+  fontFamily: 'Archivo Narrow, sans-serif',
   palette: {
     textColor: '#3eb1c8',
     primary1Color: '#3eb1c8',
     accent1Color: '#3eb1c8',
-    primary2Color: '#3eb1c8'
+    accent1Color: '#f68d2e'
   },
   tabs: {
     backgroundColor: '#f7f7f7',
@@ -29,72 +29,127 @@ const muiTheme = getMuiTheme({
 class App extends Component {
 
   onToken = (token) => {
-    fetch('/save-stripe-token', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`);
-      });
-    });
+        this.setState({ showThankYouPage: true, showPaymentPage: false })
   }
 
   constructor(props){
     super(props);
-    this.state = {showCustomAmount: false};
+    this.state = {showCustomAmount: false, donationAmount: 50,
+      monthlyPayments: true, oneTimePayments: false, fiftyDollars: true,
+      hundredDollars: false, hundredFiftyPayments: false, otherPayments: false,
+      showPaymentPage: true, showThankYouPage:false};
   }
 
   handleClick = () => {
     this.setState({showCustomAmount: true});
   }
 
+  handleChange = (event) => {
+    this.setState({donationAmount: event.target.value});
+  }
+
+  showIfMonthly = () => {
+    if (this.state.monthlyPayments) {
+      return ' per month'
+    }
+  }
+
   render() {
     const style = {
       mainCard: {
         marginTop: '20px',
-        width: '300px'
+        width: '300px',
+        boxShadow: 'none',
+        padding: '7px'
       }
     }
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <div className='row'>
-            <h2>Help End Youth Homelessness.</h2>
+            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg'/>
+            <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Help End Youth Homelessness.</h2>
+            <p style={{color: '#404040', fontSize: '25px', marginTop: '0px', maxWidth: '500px', margin: 'auto'}}>When you give to Eva’s, you help homeless youth get the skills and support they need for a better future.</p>
+
           </div>
-          <Card style={style.mainCard}>
 
-            <RaisedButton label="Monthly" primary={true} style={{marginRight: '10px',
-              marginTop: '10px'}}/>
-            <RaisedButton label="One Time" style={{marginRight: '10px',
-              marginTop: '10px'}}/>
-            <CardTitle subtitle="you can cancel anytime!" />
-
-            <CardTitle title="Amount" style={{textAlign: 'center'}} />
-
-            <RaisedButton label="$50" style={{marginRight: '5px'}}/>
-            <RaisedButton label="$100" style={{marginRight: '5px'}}/>
-            <RaisedButton label="$150" style={{marginRight: '5px'}}/>
-            <RaisedButton label="Other" style={{marginRight: '5px'}} onClick={this.handleClick}/>
-            {  this.state.showCustomAmount &&
-              <TextField
-                defaultValue="$500"
-                floatingLabelText="Floating Label Text"
-              />
-            }
-
-            <div className='row'>
-              <RaisedButton primary={true} label="Submit" style={{width: '100%', marginTop: '10px', backgroundColor: '#3eb1c8'}}
-                label={<span>
-                  <StripeCheckout
-                    token={this.onToken}
-                    stripeKey="pk_test_dZTC0BYbhboAzM3HuSRAd3RC"
+          <div style={{width: '300px', margin: 'auto'}}>
+            <Card style={style.mainCard}>
+              { this.state.showPaymentPage &&
+                <div>
+                <RaisedButton label="Monthly"
+                  primary={this.state.monthlyPayments}
+                  onTouchTap={() => this.setState({monthlyPayments: true, oneTimePayments: false})}
+                  style={{marginRight: '10px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '0',
+                  marginTop: '10px', borderRadius: '3px'}}
                   />
-                  <span style={{position: 'absolute', marginTop: '-36px', marginLeft: '-29px', zIndex: '-1'}}> Donate </span>
-                  </span>}
-                />
-            </div>
+                <RaisedButton label="One Time" primary={this.state.oneTimePayments}
+                  primary={this.state.oneTimePayments}
+                  onTouchTap={() => this.setState({oneTimePayments: true, monthlyPayments: false})}
+                  style={{marginRight: '0px', border: '1px solid #3eb1c8', boxShadow: 'none',
+                  marginTop: '10px', borderRadius: '3px'}}/>
+                  { this.state.monthlyPayments &&
+                    <p style={{color: '#f68d2e'}}> Receive an appreciation gift, cancel anytime. </p>
+                  }
+                  { this.state.oneTimePayments &&
+                    <p style={{color: '#f68d2e'}}> Thank you for helping us end youth homelessness. </p>
+                  }
+                <CardTitle title="Amount" style={{textAlign: 'center', paddingTop: 0}} />
 
-           </Card>
+                <div>
+                  <RaisedButton label="$50"
+                   style={{marginRight: '5px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '3px'}}
+                   primary={this.state.fiftyDollars}
+                   onTouchTap={() => this.setState({donationAmount: 50, fiftyDollars: true, hundredDollars: false,
+                    hundredFiftyPayments: false, otherPayments: false, showCustomAmount: false})}
+                   />
+                  <RaisedButton label="$100"
+                    style={{marginRight: '0px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '3px'}}
+                    primary={this.state.hundredDollars}
+                    onTouchTap={() => this.setState({donationAmount: 100, fiftyDollars: false, hundredDollars: true,
+                     hundredFiftyPayments: false, otherPayments: false, showCustomAmount: false})}
+                    />
+                </div>
+                <div>
+                  <RaisedButton label="$150"
+                    style={{marginRight: '5px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '3px'}}
+                    primary={this.state.hundredFiftyPayments}
+                    onTouchTap={() => this.setState({donationAmount: 150, fiftyDollars: false, hundredDollars: false,
+                     hundredFiftyPayments: true, otherPayments: false, showCustomAmount: false})}
+                    />
+                  <RaisedButton label="Other"
+                    style={{marginRight: '0px', marginTop: '5px', border: '1px solid #3eb1c8 ', boxShadow: 'none', borderRadius: '3px'}}
+                    onClick={this.handleClick}
+                    onTouchTap={() => this.setState({fiftyDollars: false, hundredDollars: false,
+                     hundredFiftyPayments: false, otherPayments: true})}
+                    primary={this.state.otherPayments}/>
+                  </div>
+                {  this.state.showCustomAmount &&
+                  <TextField
+                    style={{color: 'black'}}
+                    floatingLabelText="Donation Amount"
+                    value={this.state.donationAmount}
+                    onChange={this.handleChange}
+                  />
+                }
+                </div>
+                }
+                <div className='row'>
+                  <RaisedButton secondary={true} label="Submit" style={{width: '100%', marginTop: '20px', backgroundColor: '#3eb1c8'}}
+                    label={<span>
+                      <span style={{zIndex: '-1'}}> Donate ${this.state.donationAmount}{this.showIfMonthly()} </span>
+                      <StripeCheckout
+                        token={this.onToken}
+                        stripeKey="pk_test_dZTC0BYbhboAzM3HuSRAd3RC"
+                        amount={this.state.donationAmount*100}
+                        currency="CAD"
+                      />
+                      </span>}
+                    />
+                </div>
+             </Card>
+           </div>
+
         </div>
       </MuiThemeProvider>
     );

@@ -24,10 +24,12 @@
 }
 
 .StripeCheckout {
+  position: absolute;
   background: #3eb1c8 !important;
   width: 100%;
-  margin-left: -16px;
-  height: 100%;
+  margin-left: -221px;
+  width: 300px;
   zIndex: 1000;
   opacity: 0;
+
 }
