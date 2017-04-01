@@ -220,7 +220,7 @@ class App extends Component {
                     <br/>Checkout our events page.
                  </div>
                   <div style={{marginTop: '5px', marginBottom: '15px'}}>
-                    <a href="http://google.com">
+                    <a href="http://www.evas.ca/our-events/">
                     <RaisedButton secondary={true} label="Submit" style={{width: '50%', marginTop: '12px', backgroundColor: '#3eb1c8', height: '46px'}}
                       label={<span>
                         <p style={{zIndex: '-1', margin: '-6px', fontSize: '19px'}}> OUR EVENTS </p>
