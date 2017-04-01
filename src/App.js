@@ -162,7 +162,7 @@ class App extends Component {
           <div style={{width: '300px', margin: 'auto'}}>
             <Card style={style.mainCard}>
               { this.state.showPaymentPage &&
-                <div>
+                <div style={{marginBottom: '30px'}}>
                 <div>
                 <RaisedButton label="Monthly"
                   primary={this.state.monthlyPayments}
@@ -227,7 +227,7 @@ class App extends Component {
               }
 
               { this.state.showThankYouPage &&
-                <div style={{margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>
+                <div style={{margin: 'auto', marginTop: '15px', maxWidth: '500px', marginBottom: '30px'}}>
                   <img src='./images/thankyoushare.jpg' style={{marginLeft: '-7px', height: '300px', width:'300px', marginTop: '10px', marginBottom: '15px'}}/>
 
                  <div style={{width: '100%', color: '#404040'}}>
