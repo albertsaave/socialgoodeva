@@ -104,6 +104,7 @@ class App extends Component {
   }
 
   beginApplePay = () => {
+    console.log(this.state.donationAmount)
   var paymentRequest = {
     countryCode: 'CA',
     currencyCode: 'CAD',
@@ -113,9 +114,12 @@ class App extends Component {
       }
     };
     var session = window.Stripe.applePay.buildSession(paymentRequest,
-        function(result, completion) {
+    function(result, completion) {
+
         completion(window.ApplePaySession.STATUS_SUCCESS);
-        this.setState({ showThankYouPage: true, showPaymentPage: false })
+        // You can now redirect the user to a receipt page, etc.
+        window.location.href = '/success.html';
+
 
       }, function(error) {
         console.log(error.message);
