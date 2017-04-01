@@ -69,7 +69,7 @@ class App extends Component {
           <div className='row'>
             <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '25px', marginBottom: '-10px'}}/>
             { this.state.showPaymentPage &&
-              <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Help End Youth Homelessness.</h2>
+              <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>HELP END YOUTH HOMELESSNESS</h2>
             }
 
             { this.state.showThankYouPage &&
