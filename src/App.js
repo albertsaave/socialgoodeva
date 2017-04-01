@@ -143,15 +143,20 @@ class App extends Component {
 
               { this.state.showThankYouPage &&
                 <div style={{margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>
-                 IMAGE & share
+                 <div style={{width: '100%'}}>
+                  SHARE
+                 </div>
+                 <div style={{marginTop: '20px', float: 'left', width: '80%'}}>
+                   <FacebookShareButton title={'I have donated to Evas'} description={'I have just contributed to Evas to continue with their mission.'} url={'http://evas.ca'}>
+                     <FacebookIcon size={62} round={true}/>
+                   </FacebookShareButton>
+                 </div>
 
-                 <FacebookShareButton title={'I have donated to Evas'} description={'I have just contributed to Evas to continue with their mission.'} url={'http://evas.ca'}>
-                   <FacebookIcon size={32} />
-                 </FacebookShareButton>
-
-                 <TwitterShareButton title={'I have donated to Evas'} hashtag={'#evasshelters'} url={'http://evas.ca'}>
-                   <TwitterIcon size={32} />
-                 </TwitterShareButton>
+                <div style={{marginTop: '20px', float: 'left', width: '20%'}}>
+                   <TwitterShareButton title={'I have donated to Evas'} hashtag={'#evasshelters'} url={'http://evas.ca'}>
+                     <TwitterIcon size={62} round={true}/>
+                   </TwitterShareButton>
+                 </div>
 
                 </div>
               }
