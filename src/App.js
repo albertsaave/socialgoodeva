@@ -120,7 +120,7 @@ class App extends Component {
     let session = window.Stripe.applePay.buildSession(paymentRequest,
         function(result, completion) {
         completion(window.ApplePaySession.STATUS_SUCCESS);
-        showSuccessPage();
+        showSuccessPage;
 
       }, function(error) {
         console.log(error.message);
