@@ -112,12 +112,15 @@ class App extends Component {
       amount: this.state.donationAmount
       }
     };
+    showSuccessPage = () => {
+      this.setState({ showThankYouPage: true, showPaymentPage: false }, function () {
+          console.log(this.state.value);
+      });
+    }
     var session = window.Stripe.applePay.buildSession(paymentRequest,
         function(result, completion) {
         completion(window.ApplePaySession.STATUS_SUCCESS);
-        this.setState({ showThankYouPage: true, showPaymentPage: false }, function () {
-            console.log(this.state.value);
-        });
+        showSuccessPage();
 
       }, function(error) {
         console.log(error.message);
