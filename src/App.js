@@ -107,8 +107,8 @@ class App extends Component {
             <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '6%', marginBottom: '-10px'}}/>
             { this.state.showPaymentPage &&
               <div>
-                <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px'}}>HELP END</h2>
-                <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px', marginTop: '0'}}>YOUTH HOMELESSNESS</h2>
+                <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px'}}>Help end</h2>
+                <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px', marginTop: '0'}}>youth homelessness</h2>
                 <p style={{color: '#404040', fontSize: '20px', margin: 'auto', marginTop: '8px', marginBottom: '20px', maxWidth: '500px'}}>Provide them with the skills and support they need.</p>
 
               </div>
@@ -117,7 +117,7 @@ class App extends Component {
             }
 
             { this.state.showThankYouPage &&
-              <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Thank you for your donation.</h2>
+              <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Thank you for your donation!</h2>
             }
 
           </div>
@@ -190,26 +190,45 @@ class App extends Component {
 
               { this.state.showThankYouPage &&
                 <div style={{margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>
-                 <div style={{width: '100%'}}>
-                  SHARE THIS CAUSE
-                 </div>
-                 <div style={{marginTop: '20px', float: 'left', width: '110px'}}>
-                   <FacebookShareButton title={'I just supported Eva\'s in their work to end youth homelessness!'} description={'Please join me in helping Eva\'s get homeless and at-risk youth off the streets, find housing and community supports, and begin to rebuild their futures!'} url={'http://evas.ca'}>
-                     <FacebookIcon size={62} round={true}/>
-                   </FacebookShareButton>
-                 </div>
+                  <img src='./images/thankyoushare.jpg' style={{marginLeft: '-7px', height: '300px', width:'300px', marginTop: '10px', marginBottom: '15px'}}/>
 
-                 <div style={{marginTop: '20px', float: 'left', width: '110px'}}>
-                   <TwitterShareButton title={'Please join me in helping Eva\'s to prevent, reduce and end youth homelessness. @evasinitiatives'} hashtag={'#youth'} url={'http://evas.ca'}>
-                     <TwitterIcon size={62} round={true}/>
-                   </TwitterShareButton>
+                 <div style={{width: '100%', color: '#404040'}}>
+                  Share the pledge with your friends
                  </div>
+                 <div style={{marginLeft: '27%'}}>
+                   <div style={{marginTop: '20px', float: 'left', width: '50px'}}>
+                     <FacebookShareButton title={'I just supported Eva\'s in their work to end youth homelessness!'} description={'Please join me in helping Eva\'s get homeless and at-risk youth off the streets, find housing and community supports, and begin to rebuild their futures!'} url={'http://evas.ca'}>
+                       <FacebookIcon size={40} round={true}/>
+                     </FacebookShareButton>
+                   </div>
 
-                 <div style={{marginTop: '20px', float: 'left', width: '40px'}}>
-                   <LinkedinShareButton title={'Please join me in helping Eva\'s to prevent, reduce and end youth homelessness.'} hashtag={'#youth'} url={'http://evas.ca'}>
-                     <LinkedinIcon size={62} round={true}/>
-                   </LinkedinShareButton>
+                   <div style={{marginTop: '20px', float: 'left', width: '50px'}}>
+                     <TwitterShareButton title={'Please join me in helping Eva\'s to prevent, reduce and end youth homelessness. @evasinitiatives'} hashtag={'#youth'} url={'http://evas.ca'}>
+                       <TwitterIcon size={40} round={true}/>
+                     </TwitterShareButton>
+                   </div>
+
+                   <div style={{marginTop: '20px', float: 'left', width: '50px'}}>
+                     <LinkedinShareButton title={'Please join me in helping Eva\'s to prevent, reduce and end youth homelessness.'} hashtag={'#youth'} url={'http://evas.ca'}>
+                       <LinkedinIcon size={40} round={true}/>
+                     </LinkedinShareButton>
+                   </div>
                  </div>
+                 <br/><br/>
+                 <div style={{marginTop: '60px', color: '#404040'}}>
+                    Interested in furthering your impact?
+                    <br/>Checkout our events page.
+                 </div>
+                  <div style={{marginTop: '5px', marginBottom: '15px'}}>
+                    <a href="http://google.com">
+                    <RaisedButton secondary={true} label="Submit" style={{width: '50%', marginTop: '12px', backgroundColor: '#3eb1c8', height: '46px'}}
+                      label={<span>
+                        <p style={{zIndex: '-1', margin: '-6px', fontSize: '19px'}}> OUR EVENTS </p>
+                        </span>}
+                      labelStyle={{height: 0}}
+                      />
+                    </a>
+                  </div>
 
                 </div>
               }
