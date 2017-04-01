@@ -114,7 +114,7 @@ class App extends Component {
     };
     var session = window.Stripe.applePay.buildSession(paymentRequest,
         function(result, completion) {
-
+          completion(ApplePaySession.STATUS_SUCCESS);
         this.setState({ showThankYouPage: true, showPaymentPage: false })
 
       }, function(error) {
