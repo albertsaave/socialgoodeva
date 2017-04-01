@@ -122,13 +122,13 @@ class App extends Component {
 
       }, function(error) {
         console.log(error.message);
-      }).bind(this);
+      });
 
       session.oncancel = function() {
         console.log("User hit the cancel button in the payment window");
       };
 
-      session.begin();
+      session.begin().bind(this);
     }
 
   render() {
