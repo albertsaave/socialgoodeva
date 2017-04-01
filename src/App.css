@@ -53,15 +53,22 @@
 
 .logo {
   height: 100%;
-  background-image: url('../public/images/bridgeman.jpg');
+  background-image: url('../public/images/HeroImage.jpg');
   background-size: cover;
-  background-position: 0% 250px;
+  background-position: 0% 44px;
   background-repeat: no-repeat;
 }
 
 @media (max-width: 400px) {
   .logo {
     background-position: -70px 250px;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 920px) {
+  .logo {
+    background-position: 0px 250px;
     background-repeat: no-repeat;
   }
 }

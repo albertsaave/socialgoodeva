@@ -280,10 +280,11 @@ class App extends Component {
 
                { this.state.showPaymentPage &&
                 <div style={{marginTop: '10px', color: 'white'}}>
-                  <Checkbox label={"Receive monthly newsletters"} default={true} defaultChecked={true} labelStyle={{color: 'white', marginLeft: '-35px'}} iconStyle={{fill: 'white', marginLeft: '-4px'}}   />
+                  <Checkbox label={"Suscribe to Eva's monthly newsletter"} default={true} defaultChecked={true} labelStyle={{color: 'white', marginLeft: '-5px'}} iconStyle={{fill: 'white', marginLeft: '-4px'}}   />
                 </div>
                }
            </div>
+           <div style={{height: '30px'}}></div>
         </div>
       </MuiThemeProvider>
     );
