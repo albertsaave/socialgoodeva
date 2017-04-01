@@ -57,6 +57,18 @@ class App extends Component {
       onHundred: false, TwoFiddyHundred: false, fiveHundoDollas: false};
   }
 
+  componentDidMount() {
+
+    window.Stripe.setPublishableKey('pk_test_dZTC0BYbhboAzM3HuSRAd3RC');
+
+    window.Stripe.applePay.checkAvailability(function(available) {
+    if (available) {
+      document.getElementById('apple-pay-button').style.display = 'block';
+    }
+    });
+
+  }
+
   handleClick = () => {
     this.setState({showCustomAmount: true});
   }
@@ -185,6 +197,7 @@ class App extends Component {
                     labelStyle={{height: 0}}
                     />
                 </div>
+                  <button id="apple-pay-button"></button>
                 </div>
               }
 
