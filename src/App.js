@@ -135,7 +135,7 @@ class App extends Component {
                 </div>
 
                 { this.state.fiftyBucks &&
-                  <span><img src='images/hygeine.png' /><p style={{color: '#404040'}}> Can provide personal hygiene supplies. </p></span>
+                  <span><img src='images/hygeine.png' style={{height: '33px', display: 'inline-flex', verticalAlign: 'middle', marginRight: '10px'}}/><p style={{color: '#404040', display:'inline-flex'}}> Can provide personal hygiene supplies. </p></span>
                 }
                 { this.state.onHundred &&
                   <p style={{color: '#f68d2e'}}> Thank you! </p>
