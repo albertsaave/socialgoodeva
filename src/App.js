@@ -32,12 +32,15 @@ const muiTheme = getMuiTheme({
 
 const {
   FacebookShareButton,
-  TwitterShareButton
+  TwitterShareButton,
+  LinkedinShareButton
 } = ShareButtons;
 
 const FacebookIcon = generateShareIcon('facebook');
 
 const TwitterIcon = generateShareIcon('twitter');
+
+const LinkedinIcon = generateShareIcon('linkedin');
 
 class App extends Component {
 
@@ -144,18 +147,24 @@ class App extends Component {
               { this.state.showThankYouPage &&
                 <div style={{margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>
                  <div style={{width: '100%'}}>
-                  SHARE
+                  SHARE THIS CAUSE
                  </div>
-                 <div style={{marginTop: '20px', float: 'left', width: '80%'}}>
-                   <FacebookShareButton title={'I have donated to Evas'} description={'I have just contributed to Evas to continue with their mission.'} url={'http://evas.ca'}>
+                 <div style={{marginTop: '20px', float: 'left', width: '110px'}}>
+                   <FacebookShareButton title={'I just supported Eva\'s in their work to end youth homelessness!'} description={'Please join me in helping Eva\'s get homeless and at-risk youth off the streets, find housing and community supports, and begin to rebuild their futures!'} url={'http://evas.ca'}>
                      <FacebookIcon size={62} round={true}/>
                    </FacebookShareButton>
                  </div>
 
-                <div style={{marginTop: '20px', float: 'left', width: '20%'}}>
-                   <TwitterShareButton title={'I have donated to Evas'} hashtag={'#evasshelters'} url={'http://evas.ca'}>
+                 <div style={{marginTop: '20px', float: 'left', width: '110px'}}>
+                   <TwitterShareButton title={'Please join me in helping Eva\'s to prevent, reduce and end youth homelessness. @evasinitiatives'} hashtag={'#youth'} url={'http://evas.ca'}>
                      <TwitterIcon size={62} round={true}/>
                    </TwitterShareButton>
+                 </div>
+
+                 <div style={{marginTop: '20px', float: 'left', width: '40px'}}>
+                   <LinkedinShareButton title={'Please join me in helping Eva\'s to prevent, reduce and end youth homelessness.'} hashtag={'#youth'} url={'http://evas.ca'}>
+                     <LinkedinIcon size={62} round={true}/>
+                   </LinkedinShareButton>
                  </div>
 
                 </div>
