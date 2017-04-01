@@ -225,7 +225,7 @@ class App extends Component {
                     labelStyle={{height: 0}}
                     />
                 </div>
-                  <button id="apple-pay-button" onTouchTap={this.beginApplePay.bind(this)}></button>
+                  <button id="apple-pay-button" onTouchTap={this.beginApplePay}></button>
                 </div>
               }
 

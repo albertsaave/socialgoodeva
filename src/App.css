@@ -36,6 +36,7 @@
 }
 
 #apple-pay-button {
+  display: none;
   background-color: black;
   background-image: -webkit-named-image(apple-pay-logo-white);
   background-size: 100% 100%;
