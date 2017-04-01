@@ -103,6 +103,27 @@ class App extends Component {
     }
   }
 
+  beginApplePay = () => {
+  var paymentRequest = {
+    countryCode: 'CA',
+    currencyCode: 'CAD',
+    total: {
+      label: 'Evas',
+      amount: this.state.donationAmount
+      }
+    };
+    var session = Stripe.applePay.buildSession(paymentRequest,
+    function(result, completion) {
+
+      this.setState({ showThankYouPage: true, showPaymentPage: false })
+
+    session.oncancel = function() {
+      console.log("User hit the cancel button in the payment window");
+    };
+
+    session.begin();
+  }
+
   render() {
     const style = {
       mainCard: {
@@ -197,7 +218,7 @@ class App extends Component {
                     labelStyle={{height: 0}}
                     />
                 </div>
-                  <button id="apple-pay-button"></button>
+                  <button id="apple-pay-button" onTouchTap={beginApplePay()}></button>
                 </div>
               }
 
