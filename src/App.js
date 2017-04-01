@@ -104,7 +104,7 @@ class App extends Component {
   }
 
   beginApplePay = () => {
-  let paymentRequest = {
+  const paymentRequest = {
     countryCode: 'CA',
     currencyCode: 'CAD',
     total: {
@@ -112,15 +112,17 @@ class App extends Component {
       amount: this.state.donationAmount
       }
     };
-    let showSuccessPage = () => {
+
+    const showSuccessPage = () => {
       this.setState({ showThankYouPage: true, showPaymentPage: false }, function () {
           console.log(this.state.value);
       });
-    }
-    let session = window.Stripe.applePay.buildSession(paymentRequest,
+    };
+
+    const session = window.Stripe.applePay.buildSession(paymentRequest,
         function(result, completion) {
         completion(window.ApplePaySession.STATUS_SUCCESS);
-        showSuccessPage;
+
 
       }, function(error) {
         console.log(error.message);
