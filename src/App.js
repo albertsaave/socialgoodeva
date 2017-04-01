@@ -104,7 +104,6 @@ class App extends Component {
   }
 
   beginApplePay = () => {
-    console.log(this.state.donationAmount)
   var paymentRequest = {
     countryCode: 'CA',
     currencyCode: 'CAD',
@@ -226,7 +225,7 @@ class App extends Component {
                     labelStyle={{height: 0}}
                     />
                 </div>
-                  <button id="apple-pay-button" onTouchTap={this.beginApplePay}></button>
+                  <button id="apple-pay-button" onTouchTap={this.beginApplePay.bind(this)}></button>
                 </div>
               }
 
