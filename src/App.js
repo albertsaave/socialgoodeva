@@ -112,17 +112,21 @@ class App extends Component {
       amount: this.state.donationAmount
       }
     };
-    var session = Stripe.applePay.buildSession(paymentRequest,
-    function(result, completion) {
+    var session = window.Stripe.applePay.buildSession(paymentRequest,
+        function(result, completion) {
 
-      this.setState({ showThankYouPage: true, showPaymentPage: false })
+        this.setState({ showThankYouPage: true, showPaymentPage: false })
 
-    session.oncancel = function() {
-      console.log("User hit the cancel button in the payment window");
-    };
+      }, function(error) {
+        console.log(error.message);
+      });
 
-    session.begin();
-  }
+      session.oncancel = function() {
+        console.log("User hit the cancel button in the payment window");
+      };
+
+      session.begin();
+    }
 
   render() {
     const style = {
@@ -218,7 +222,7 @@ class App extends Component {
                     labelStyle={{height: 0}}
                     />
                 </div>
-                  <button id="apple-pay-button" onTouchTap={beginApplePay()}></button>
+                  <button id="apple-pay-button" onTouchTap={this.beginApplePay}></button>
                 </div>
               }
 
