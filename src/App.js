@@ -104,7 +104,7 @@ class App extends Component {
   }
 
   beginApplePay = () => {
-  console.log(this)
+    window.alert(this);
   var paymentRequest = {
     countryCode: 'CA',
     currencyCode: 'CAD',
@@ -116,10 +116,7 @@ class App extends Component {
     var session = window.Stripe.applePay.buildSession(paymentRequest,
         function(result, completion) {
         completion(window.ApplePaySession.STATUS_SUCCESS);
-        console.log(this)
-        this.setState({ showThankYouPage: true, showPaymentPage: false }, function () {
-            console.log(this.state.value);
-        });
+        this.setState({ showThankYouPage: true, showPaymentPage: false })
 
       }, function(error) {
         console.log(error.message);
@@ -163,7 +160,7 @@ class App extends Component {
 
           </div>
 
-          <div style={{width: '300px', margin: 'auto', marginBottom: '30px'}}>
+          <div style={{width: '300px', margin: 'auto'}}>
             <Card style={style.mainCard}>
               { this.state.showPaymentPage &&
                 <div>
@@ -226,7 +223,7 @@ class App extends Component {
                     labelStyle={{height: 0}}
                     />
                 </div>
-                  <button id="apple-pay-button" onTouchTap={this.beginApplePay.bind(this)}></button>
+                  <button id="apple-pay-button" onTouchTap={this.beginApplePay}></button>
                 </div>
               }
 
