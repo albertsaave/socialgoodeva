@@ -6,6 +6,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText, FlatButto
 import getMuiTheme from 'material-ui/styles/getMuiTheme';// Needed for onTouchTap
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
+import Checkbox from 'material-ui/Checkbox';
+
 import {
   ShareButtons,
   generateShareIcon
@@ -144,7 +146,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <div className='row'>
-            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '5%', marginBottom: '-10px'}}/>
+            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '4%', marginBottom: '-10px'}}/>
             { this.state.showPaymentPage &&
               <div>
                 <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px'}}>Help end</h2>
@@ -275,6 +277,12 @@ class App extends Component {
               }
 
              </Card>
+
+               { this.state.showPaymentPage &&
+                <div style={{marginTop: '10px', color: 'white'}}>
+                  <Checkbox label={"Receive monthly newsletters"} default={true} defaultChecked={true} labelStyle={{color: 'white', marginLeft: '-35px'}} iconStyle={{fill: 'white', marginLeft: '-4px'}}   />
+                </div>
+               }
            </div>
         </div>
       </MuiThemeProvider>
