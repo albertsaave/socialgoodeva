@@ -53,7 +53,8 @@ class App extends Component {
     this.state = {showCustomAmount: false, donationAmount: 50,
       monthlyPayments: true, oneTimePayments: false, fiftyDollars: true,
       hundredDollars: false, hundredFiftyPayments: false, otherPayments: false,
-      showPaymentPage: true, showThankYouPage:false, fiftyBucks: true, onHundred: false, TwoFiddyHundred: false};
+      showPaymentPage: true, showThankYouPage:false, fiftyBucks: false, twentyBucks: true,
+      onHundred: false, TwoFiddyHundred: false, fiveHundoDollas: false};
   }
 
   handleClick = () => {
@@ -62,6 +63,26 @@ class App extends Component {
 
   handleChange = (event) => {
     this.setState({donationAmount: event.target.value});
+    if (event.target.value <= 50) {
+      this.setState({fiftyBucks: false, twentyBucks: true, onHundred: false,
+      TwoFiddyHundred: false, fiveHundoDollas: false});
+    }
+    if (event.target.value > 50 && event.target.value <= 100) {
+      this.setState({fiftyBucks: true, twentyBucks: false, onHundred: false,
+      TwoFiddyHundred: false, fiveHundoDollas: false});
+    }
+    if (event.target.value > 100 && event.target.value <= 250) {
+      this.setState({fiftyBucks: false, twentyBucks: false, onHundred: true,
+      TwoFiddyHundred: false, fiveHundoDollas: false});
+    }
+    if (event.target.value > 250 && event.target.value <= 500) {
+      this.setState({fiftyBucks: false, twentyBucks: false, onHundred: false,
+      TwoFiddyHundred: true, fiveHundoDollas: false});
+    }
+    if (event.target.value > 500) {
+      this.setState({fiftyBucks: false, twentyBucks: false, onHundred: false,
+      TwoFiddyHundred: false, fiveHundoDollas: true});
+    }
   }
 
   showIfMonthly = () => {
@@ -121,7 +142,7 @@ class App extends Component {
                     <p style={{color: '#f68d2e'}}> Receive an appreciation gift, cancel anytime. </p>
                   }
                   { this.state.oneTimePayments &&
-                    <p style={{color: '#f68d2e'}}> Thank you! </p>
+                    <p style={{color: '#f68d2e'}}>  </p>
                   }
                 <h5 style={{color:'#585858', margin: '0 0 10px 0', fontSize: '25px'}}> Amount </h5>
                   <div>
@@ -134,14 +155,20 @@ class App extends Component {
                   </div>
                 </div>
 
+                { this.state.twentyBucks &&
+                  <span><img src='images/hygeine.png' style={{height: '33px', display: 'inline-flex', verticalAlign: 'middle', marginRight: '10px'}}/><p style={{color: '#404040', display:'inline-flex'}}> can provide personal hygiene supplies. </p></span>
+                }
                 { this.state.fiftyBucks &&
-                  <span><img src='images/hygeine.png' style={{height: '33px', display: 'inline-flex', verticalAlign: 'middle', marginRight: '10px'}}/><p style={{color: '#404040', display:'inline-flex'}}> Can provide personal hygiene supplies. </p></span>
+                  <span><img src='images/food.png' style={{height: '33px', display: 'inline-flex', verticalAlign: 'middle', marginRight: '10px'}}/><p style={{color: '#404040', display:'inline-flex'}}> can provide nourishment for two weeks. </p></span>
                 }
                 { this.state.onHundred &&
-                  <p style={{color: '#f68d2e'}}> Thank you! </p>
+                  <span><img src='images/tttc.png' style={{height: '33px', display: 'inline-flex', verticalAlign: 'middle', marginRight: '10px'}}/><p style={{color: '#404040', display:'inline-flex'}}> can provide three weeks of TTC access. </p></span>
                 }
                 { this.state.TwoFiddyHundred &&
-                  <p style={{color: '#f68d2e'}}> Thank you! </p>
+                  <span><img src='images/eduction.png' style={{height: '33px', display: 'inline-flex', verticalAlign: 'middle', marginRight: '10px'}}/><p style={{color: '#404040', display:'inline-flex'}}> can provide educational counselling. </p></span>
+                }
+                { this.state.fiveHundoDollas &&
+                  <span><img src='images/shelter.png' style={{height: '33px', display: 'inline-flex', verticalAlign: 'middle', marginRight: '10px'}}/><p style={{color: '#404040', display:'inline-flex'}}> can provide safe shelter for two weeks. </p></span>
                 }
 
                 <div className='row'>
@@ -189,9 +216,6 @@ class App extends Component {
 
              </Card>
            </div>
-           { this.state.showPaymentPage &&
-             <p style={{color: '#404040', fontSize: '18px', margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>balbalbalblabl.</p>
-           }
         </div>
       </MuiThemeProvider>
     );
