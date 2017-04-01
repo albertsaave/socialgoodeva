@@ -113,11 +113,11 @@ class App extends Component {
       }
     };
     var session = window.Stripe.applePay.buildSession(paymentRequest,
-    function(result, completion) {
+    (result, completion) => {
 
         completion(window.ApplePaySession.STATUS_SUCCESS);
         // You can now redirect the user to a receipt page, etc.
-        window.location.href = '/success.html';
+        this.setState({ showThankYouPage: true, showPaymentPage: false })
 
 
       }, function(error) {
