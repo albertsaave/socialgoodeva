@@ -280,7 +280,7 @@ class App extends Component {
 
                { this.state.showPaymentPage &&
                 <div style={{marginTop: '10px', color: 'white'}}>
-                  <Checkbox label={"Suscribe to Eva's monthly newsletter"} default={true} defaultChecked={true} labelStyle={{color: 'white', marginLeft: '-5px'}} iconStyle={{fill: 'white', marginLeft: '-4px'}}   />
+                  <Checkbox label={"Subscribe to Eva's monthly newsletter"} default={true} defaultChecked={true} labelStyle={{color: 'white', marginLeft: '-5px'}} iconStyle={{fill: 'white', marginLeft: '-4px'}}   />
                 </div>
                }
            </div>
