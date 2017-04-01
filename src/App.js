@@ -144,7 +144,7 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <div className='row'>
-            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '6%', marginBottom: '-10px'}}/>
+            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '5%', marginBottom: '-10px'}}/>
             { this.state.showPaymentPage &&
               <div>
                 <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '0px'}}>Help end</h2>
