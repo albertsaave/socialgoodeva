@@ -104,7 +104,6 @@ class App extends Component {
   }
 
   beginApplePay = () => {
-    window.alert(this);
   var paymentRequest = {
     countryCode: 'CA',
     currencyCode: 'CAD',
