@@ -57,7 +57,7 @@ class App extends Component {
   render() {
     const style = {
       mainCard: {
-        marginTop: '20px',
+        marginTop: '5px',
         width: '300px',
         boxShadow: 'none',
         padding: '7px'
@@ -67,9 +67,8 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <div className='row'>
-            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg'/>
+            <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '25px', marginBottom: '-10px'}}/>
             <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Help End Youth Homelessness.</h2>
-            <p style={{color: '#404040', fontSize: '25px', marginTop: '0px', maxWidth: '500px', margin: 'auto'}}>When you give to Eva’s, you help homeless youth get the skills and support they need for a better future.</p>
 
           </div>
 
@@ -94,11 +93,10 @@ class App extends Component {
                   { this.state.oneTimePayments &&
                     <p style={{color: '#f68d2e'}}> Thank you for helping us end youth homelessness. </p>
                   }
-                <CardTitle title="Amount" style={{textAlign: 'center', paddingTop: 0}} />
-
+                <h5 style={{color:'#585858', margin: '0 0 10px 0', fontSize: '25px'}}> Amount </h5>
                 <div>
                   <RaisedButton label="$50"
-                   style={{marginRight: '5px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '3px'}}
+                   style={{marginRight: '10px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '3px'}}
                    primary={this.state.fiftyDollars}
                    onTouchTap={() => this.setState({donationAmount: 50, fiftyDollars: true, hundredDollars: false,
                     hundredFiftyPayments: false, otherPayments: false, showCustomAmount: false})}
@@ -112,7 +110,7 @@ class App extends Component {
                 </div>
                 <div>
                   <RaisedButton label="$150"
-                    style={{marginRight: '5px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '3px'}}
+                    style={{marginRight: '10px', border: '1px solid #3eb1c8', boxShadow: 'none', borderRadius: '3px'}}
                     primary={this.state.hundredFiftyPayments}
                     onTouchTap={() => this.setState({donationAmount: 150, fiftyDollars: false, hundredDollars: false,
                      hundredFiftyPayments: true, otherPayments: false, showCustomAmount: false})}
@@ -135,9 +133,9 @@ class App extends Component {
                 </div>
                 }
                 <div className='row'>
-                  <RaisedButton secondary={true} label="Submit" style={{width: '100%', marginTop: '20px', backgroundColor: '#3eb1c8'}}
+                  <RaisedButton secondary={true} label="Submit" style={{width: '100%', marginTop: '20px', backgroundColor: '#3eb1c8', height: '46px'}}
                     label={<span>
-                      <span style={{zIndex: '-1'}}> Donate ${this.state.donationAmount}{this.showIfMonthly()} </span>
+                      <p style={{zIndex: '-1', margin: '-3px'}}> Donate ${this.state.donationAmount}{this.showIfMonthly()} </p>
                       <StripeCheckout
                         token={this.onToken}
                         stripeKey="pk_test_dZTC0BYbhboAzM3HuSRAd3RC"
@@ -145,10 +143,12 @@ class App extends Component {
                         currency="CAD"
                       />
                       </span>}
+                    labelStyle={{height: 0}}
                     />
                 </div>
              </Card>
            </div>
+           <p style={{color: '#404040', fontSize: '18px', margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>When you give to Eva’s, you help homeless youth get the skills and support they need for a better future.</p>
 
         </div>
       </MuiThemeProvider>
