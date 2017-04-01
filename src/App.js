@@ -68,13 +68,20 @@ class App extends Component {
         <div className="App">
           <div className='row'>
             <img src='https://tmpeva.s3.amazonaws.com/eva-logo.svg' style={{height: '40px', marginTop: '25px', marginBottom: '-10px'}}/>
-            <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Help End Youth Homelessness.</h2>
+            { this.state.showPaymentPage &&
+              <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Help End Youth Homelessness.</h2>
+            }
+
+            { this.state.showThankYouPage &&
+              <h2 style={{color: '#404040', fontSize: '40px', marginBottom: '5px'}}>Thank you for your donation.</h2>
+            }
 
           </div>
 
           <div style={{width: '300px', margin: 'auto'}}>
             <Card style={style.mainCard}>
               { this.state.showPaymentPage &&
+                <div>
                 <div>
                 <RaisedButton label="Monthly"
                   primary={this.state.monthlyPayments}
@@ -103,7 +110,7 @@ class App extends Component {
                     />
                   </div>
                 </div>
-                }
+
                 <div className='row'>
                   <RaisedButton secondary={true} label="Submit" style={{width: '100%', marginTop: '12px', backgroundColor: '#3eb1c8', height: '46px'}}
                     label={<span>
@@ -118,10 +125,19 @@ class App extends Component {
                     labelStyle={{height: 0}}
                     />
                 </div>
+                </div>
+              }
              </Card>
            </div>
-           <p style={{color: '#404040', fontSize: '18px', margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>When you give to Eva’s, you help homeless youth get the skills and support they need for a better future.</p>
+           { this.state.showPaymentPage &&
+             <p style={{color: '#404040', fontSize: '18px', margin: 'auto', marginTop: '15px', maxWidth: '500px'}}>When you give to Eva’s, you help homeless youth get the skills and support they need for a better future.</p>
+           }
 
+           { this.state.showThankYouPage &&
+             <div>
+              IMAGE & share
+             </div>
+           }
         </div>
       </MuiThemeProvider>
     );
